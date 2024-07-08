@@ -29,9 +29,6 @@ class SecurityConfig {
         authorize("/login", permitAll)
         authorize(anyRequest, authenticated)
       }
-      sessionManagement {
-        sessionCreationPolicy = SessionCreationPolicy.ALWAYS
-      }
     }
     return http.build()
   }
@@ -63,7 +60,5 @@ class SecurityConfig {
   }
 
   @Bean
-  fun passwordEncoder(): PasswordEncoder {
-    return PasswordEncoderFactories.createDelegatingPasswordEncoder()
-  }
+  fun passwordEncoder(): PasswordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
 }
